@@ -1,0 +1,16 @@
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.DS_Store
+data/input/
+data/raw/
+**/Extracted Data/
+ma-data/
+**/*.zip
+
+data/output/
+**/*.parquet
+**/*.feather
+**/*.pkl
+
+!data/output/final/
