@@ -20,3 +20,4 @@ data/processed/plan_county_year_2014_2019.csv
 data/processed/plan_service_area_*.csv
 data/cache/
 data/processed/plan_bids_*.csv
+data/processed/_tmp/
