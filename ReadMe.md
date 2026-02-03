@@ -30,3 +30,14 @@ This is my Homework #2 attempt, by Rahil Patel. For this assignment, I have 3 da
 
 3. hwk2_rebate
 
+- Searched for the Part C plan level workbook and picked the best sheet using a scoring rule based on needed columns.
+
+- Cleaned contract_id and plan_id again and forced plan_id to 3 digits to match other datasets.
+
+- Parsed rebate PMPM, AB PMPM payment, and risk score, then computed bid_pmpm as AB payment minus rebate.
+
+- Wrote plan level bid files for all years and year slices for 2014 and 2018.
+
+- Merged 2018 plan bids onto the 2018 plan county year file and computed county bid means with and without enrollment weights.
+
+- Merged county bids to 2018 HHI and classified markets using the 33rd and 66th percentile HHI cutoffs.
