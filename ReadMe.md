@@ -1,43 +1,31 @@
-Hello
+Hello,
 
-This is my Homework #2 attempt, by Rahil Patel. For this assignment, I have 3 dataset building notebooks that include all necessary data to answer the questions. Here is a brief description of each:
+This is my Homework #2 submission, by Rahil Patel. For this assignment, I used three dataset-building notebooks that together generate all of the processed datasets needed for the analysis notebook (and the final figures/tables for Questions 1–10). Briefly:
 
 1. hw2_enrollment
 
-- Normalized column names across messy monthly files.
+- Imports and cleans the monthly enrollment and service area files for 2014–2019.
 
-- Cleaned contract_id and plan_id, forced plan_id to 3 digits.
+- Merges enrollment to service area at the contract/plan/county level and collapses to a plan–county–year dataset (using December enrollment when available, otherwise average monthly enrollment).
 
-- Built consistent 5 digit county FIPS, including fallback logic when FIPS came as state plus county codes.
+- Applies the required exclusions: SNPs, 800-series plans, and PDP-only / non–Part C plans.
 
-- Flagged and dropped SNP plans, 800 series plans, and PDP only plans into a single drop_hw2 flag.
+- Outputs: county plan counts by year and a county-year dataset with HHI (based on enrollment shares) and MA penetration/share (using the penetration denominator).
 
-- Merged enrollment with service area month by month, then collapsed to plan county year with enroll_sum, avg_enrollment, and dec_enrollment.
+2. hw2_covariate
 
-- Produced county plan counts for 2014 to 2019 and county HHI plus MA share using penetration files.
+- Cleans the landscape/plan characteristics files (messy headers and inconsistent columns across years) to produce a consistent 2014–2019 landscape dataset.
 
-2. hwk2_covariate
+- Builds FFS cost measures for counties (2014–2019) and computes 2018 FFS cost quartiles for stratification/controls in the treatment effect section.
 
-- Auto detected header rows in landscape CSVs and standardized columns across years.
+- Fixes the ID mismatch between SSA-style county codes in the FFS files and standard county FIPS by constructing an SSA → FIPS crosswalk from the penetration files.
 
-- Combined multiple landscape chunks per year into one cleaned long file for 2014 to 2019.
+3. hw2_rebate
 
-- Built a county year FFS cost measure from CMS master CSV for 2014 to 2015 and Excel files for 2016 to 2019.
+- Extracts and cleans the CMS payment / risk-rebate plan-level files for 2014–2019.
 
-- Cleaned the FFS code into county FIPS and enforced numeric reimbursements and enrollments.
+- Backs out plan bids (PMPM) using payment and rebate components and saves bid datasets for 2014 and 2018 for the histogram comparison.
 
-- Created 2018 FFS quartiles with qcut and saved a small 2018 quartile file for matching and IPW.
+- For 2018, merges plan bids to the plan–county–year file and aggregates to county-level mean bids (enrollment-weighted and unweighted).
 
-3. hwk2_rebate
-
-- Searched for the Part C plan level workbook and picked the best sheet using a scoring rule based on needed columns.
-
-- Cleaned contract_id and plan_id again and forced plan_id to 3 digits to match other datasets.
-
-- Parsed rebate PMPM, AB PMPM payment, and risk score, then computed bid_pmpm as AB payment minus rebate.
-
-- Wrote plan level bid files for all years and year slices for 2014 and 2018.
-
-- Merged 2018 plan bids onto the 2018 plan county year file and computed county bid means with and without enrollment weights.
-
-- Merged county bids to 2018 HHI and classified markets using the 33rd and 66th percentile HHI cutoffs.
+- Merges county bids with county HHI and classifies markets as competitive (bottom 33% HHI) vs uncompetitive (top 66% HHI) for the ATE analysis.
