@@ -21,3 +21,4 @@ data/processed/plan_service_area_*.csv
 data/cache/
 data/processed/plan_bids_*.csv
 data/processed/_tmp/
+data/cache/cms_payment_extracted/
