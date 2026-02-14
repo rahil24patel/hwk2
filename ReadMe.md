@@ -18,13 +18,13 @@ This is my Homework #2 submission, by Rahil Patel. For this assignment, I used t
 
 - Builds FFS cost measures for counties (2014–2019) and computes 2018 FFS cost quartiles for stratification/controls in the treatment effect section.
 
-- Fixes the ID mismatch between SSA-style county codes in the FFS files and standard county FIPS using the penetration files.
+- Fixes the ID mismatch between SSA-style county codes in the FFS files and standard county FIPS by constructing an SSA → FIPS crosswalk from the penetration files.
 
 3. hw2_rebate
 
 - Extracts and cleans the CMS payment / risk-rebate plan-level files for 2014–2019.
 
-- Backs out plan bids/PMPM using payment and rebate components and saves bid datasets for 2014 and 2018 for the histogram comparison.
+- Backs out plan bids (PMPM) using payment and rebate components and saves bid datasets for 2014 and 2018 for the histogram comparison.
 
 - For 2018, merges plan bids to the plan–county–year file and aggregates to county-level mean bids (enrollment-weighted and unweighted).
 
